@@ -15,6 +15,13 @@ public class HomePage {
     @FindBy(xpath = "//span[text()='Login']")
     WebElement loginButton;
 
+    @FindBy(xpath = "<span>Learn</span>")
+    WebElement learnTab;
+
+    @FindBy(xpath ="<span>Learning Materials</span>")
+    WebElement learningMaterialmenu;
+
+
     public HomePage(WebDriver driver) {
         this.driver = driver;
     }
