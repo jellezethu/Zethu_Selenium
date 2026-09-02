@@ -18,7 +18,6 @@ public class LearnPage {
    @FindBy(xpath ="<span>Learning Materials</span>")
    WebElement materialsTab;
 
-   @
 
     public LearnPage(WebDriver driver) {
             this.driver = driver;
