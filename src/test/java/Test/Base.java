@@ -1,6 +1,6 @@
 package Test;
 
-import Pages.HomePage;
+import Pages.*;
 import Utils.BrowserFactory;
 import Utils.ReadData;
 import Utils.TakesScreenshots;
@@ -16,16 +16,20 @@ public class Base {
 
     //creates homepage n connects it to browser driver so elements can be used from homepage
     public HomePage homePage = PageFactory.initElements(driver, HomePage.class);
-
+    public DeviceOrderPage deviceOrderPage = PageFactory.initElements(driver, DeviceOrderPage.class);
+    public InvoicePage invoicePage = PageFactory.initElements(driver, InvoicePage.class);
+    public InvoiceHistoryPopUp invoiceHistoryPopUp = PageFactory.initElements(driver, InvoiceHistoryPopUp.class);
+    public LearnPage learnPage = PageFactory.initElements(driver, LearnPage.class);
+    public LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
+    public OrderSummaryPage orderSummaryPage = PageFactory.initElements(driver, OrderSummaryPage.class);
+    public OrderConfirmationPopUp orderConfirmationPopUp = PageFactory.initElements(driver, OrderConfirmationPopUp.class);
     public TakesScreenshots takesScreenshots = new TakesScreenshots();
 
-    ReadData readData;
 
-    {
-        try {
-            readData = new ReadData();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+
+    boolean isInvoicePageDisplayed() {
+        return driver.getCurrentUrl().contains("pdf");
     }
+
+
 }

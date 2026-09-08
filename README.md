@@ -1,34 +1,31 @@
-hi
-My new project
+End-to-End Flow: Login → Purchase → Invoice
 
-Login with your test user. 
+Login with your test user → Verify that you logged in.
 
-Select Web Automation Basic Form tab.
+Select Web Automation Advance tab → Inventory Form shown.
 
-Enter Full Name: "John Doe".
+Select Device Type: Phone → Brand dropdown enabled.
 
-Enter Email: "john@test.com".
+Select Brand: Apple → Device preview shown.
 
-Enter Age: 25.
+Select Storage: 128GB → Unit price R480.00 displayed.
 
-Select Gender: Male.
+Select Color: Blue → Color selection applied.
 
-Select Country: South Africa.
+Enter Quantity: 2 → Subtotal R960.00.
 
-Select Experience: Intermediate (2-5 years).
+Enter Address: "123 Test Street" → Address field filled.
 
-Check Skills: JavaScript, Selenium.
+Click Next → Order preview displayed.
 
-Enter Comments: "Test automation practice".
+Select Express Shipping → R25.00 added.
 
-Check Subscribe to Newsletter.
+Select 1yr Warranty → R49.00 added.
 
-Check Accept Terms & Conditions.
+Apply discount code SAVE10 → 10% off applied.
 
-Click Validate.
+Click Confirm Purchase → Success toast with order details.
 
-Click Submit Form.
+Click View Invoice → Invoice history panel shown.
 
-Click Submissions button.
- 
-Click View on submission.
+Click View on invoice → Invoice opens with all order details.
