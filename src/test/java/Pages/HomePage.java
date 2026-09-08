@@ -31,5 +31,9 @@ public class HomePage {
         loginButton.click();
     }
 
+    public static void verifyLoginSuccess() {
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(learnTab));
+        learnTab.isDisplayed();
+    }
 
 }

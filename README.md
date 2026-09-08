@@ -14,7 +14,7 @@ Select Color: Blue → Color selection applied.
 
 Enter Quantity: 2 → Subtotal R960.00.
 
-Enter Address: "123 Test Street" → Address field filled.
+Enter Address: "123 Tests Street" → Address field filled.
 
 Click Next → Order preview displayed.
 

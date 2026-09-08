@@ -1,8 +1,7 @@
-package Test;
+package Tests;
 
 import Pages.*;
 import Utils.BrowserFactory;
-import Utils.ReadData;
 import Utils.TakesScreenshots;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
