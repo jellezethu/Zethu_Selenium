@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class loginToNdosiWebsite {
+public class LoginToNdosiWebsite {
 
     WebDriver driver;
 
@@ -57,9 +57,6 @@ public class loginToNdosiWebsite {
         //boolean loginSuccess = driver.findElement(By.xpath("//span[text()='My learning']")).isDisplayed();
     }
 
-    @AfterTest
-    public void tearDown() {
-        driver.quit();
-    }
+
 
 }
