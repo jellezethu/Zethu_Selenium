@@ -4,6 +4,7 @@ import Pages.HomePage;
 import Pages.LearnPage;
 import Utils.ReadData;
 import net.bytebuddy.build.Plugin;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.devtools.latest.backgroundservice.BackgroundService;
@@ -17,6 +18,7 @@ import Pages.InvoicePage;
 import Pages.OrderConfirmationPopUp;
 import Pages.InvoiceHistoryPopUp;
 
+import java.time.Duration;
 
 
 //import static Utils.BrowserFactory.driver;
@@ -55,8 +57,8 @@ public class LoginTests extends Base {
     @Test(priority = 3)
     public void clickLoginSubmitButton() throws InterruptedException {
         loginPage.clickLoginSubmitButton();
-        WebDriver wait = new WebDriverWait(driver,10);
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.ID("login-submit"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.id("login-submit"));
         takesScreenshots.takesSnapShot(driver,"dashboard page");
     }
     @Test(priority = 4)
@@ -67,17 +69,9 @@ public class LoginTests extends Base {
         //homepage.verifyLoginSuccess();
     }
 
-//    @Test(priority = 5)
-//    LoginPage loginPage = new LoginPage(driver);
-//        takesScreenshots.takesSnapShot(driver,"login page");
-//
-//    @Test(priority = 6)
-//    HomePage homePage = new HomePage(driver);
-//    takesScreenshots.takesSnapShot(driver,"dashboard page");
-
     @Test(priority = 5)
     public void clickLearnTabTest(){
-        learnPage = homePage.clickLearnTabTest();
+        learnPage.clickLearnButton();
         //learnPage.clickLearnPage();
         takesScreenshots.takesSnapShot(driver,"Learn page");
     }
@@ -108,5 +102,34 @@ public class LoginTests extends Base {
     }
 
     @Test(priority = 9)
+    public void verifyOrderSummaryTest() {
+        orderSummaryPage.verifyOrderSummary();
+        OrderSummaryPage.selectExpressShippingOption("Express");
+        OrderSummaryPage.selectOneYearWarrantyOption("1yr");
+        OrderSummaryPage.enterDiscountCode("SAVA10");
+        takesScreenshots.takesSnapShot(driver,"Discounts and Shipping Applied");
+
+        //orderSummaryPage.clickConfirmPurchaseButton();
+    }
+
+    @Test(priority = 10)
+    public void OrderConfirmationPopUpTest() {
+        orderConfirmationPopUp.verifyOrderConfirmationPopUp.clickViewInvoice();
+        takesScreenshots.takesSnapShot(driver,"Order Confirmation Pop Up");
+
+        orderConfirmationPopUp.clickViewInvoiceButton();
+    }
+    @Test(priority = 11)
+    public void InvoiceHistoryPopUpTest() {
+        invoiceHistoryPopUp.InvoiceHistory.clickViewInvoice();
+        takesScreenshots.takesSnapShot(driver,"Invoice History Pop Up");
+
+        //invoiceHistoryPopUp.clickViewInvoiceButton();
+    }
+    @Test(priority = 12)
+    public void InvoicePageTest() {
+        invoicePage.verifyInvoicePage();
+        takesScreenshots.takesSnapShot(driver, "Invoice Page");
+    }
 
 }

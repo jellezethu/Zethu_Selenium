@@ -3,18 +3,38 @@ package Tests;
 import Pages.*;
 import Utils.BrowserFactory;
 import Utils.TakesScreenshots;
+import com.aventstack.extentreports.ExtentReports;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 public class Base {
+    public static WebDriver driver;
+    public static ExtentReports extent;
+    public static ExtentTest test;
 
-    BrowserFactory browserFactory= new BrowserFactory();
+    public HomePage homePage;
+    public DeviceOrderPage deviceOrderPage;
+    public InvoicePage invoicePage;
+    public InvoiceHistoryPopUp invoiceHistoryPopUp;
+    public LearnPage learnPage;
+    public LoginPage loginPage;
+    public OrderSummaryPage orderSummaryPage;
+    public OrderConfirmationPopUp orderConfirmationPopUp;
+    public TakesScreenshots takesScreenshots;
 
-    //open chrome and store the driver in a variable
-    final WebDriver driver = browserFactory.launchBrowser("chrome","https://ndosisimplifiedautomation.vercel.app/");
+    @BeforeSuite
+    public void setupReport() {
+        // Initialize the Extent HTML report system
+        extent = ExtentManager.getInstance();
+    }
 
-    //creates homepage n connects it to browser driver so elements can be used from homepage
-    public HomePage homePage = PageFactory.initElements(driver, HomePage.class);
+    @BeforeMethod
+    public void setupBrowser() {
+        // Open Chrome and store the driver in the shared variable
+        driver = BrowserFactory.launchBrowser("chrome", "https://ndosisimplifiedautomation.vercel.app/");
+
+
+        public HomePage homePage = PageFactory.initElements(driver, HomePage.class);
     public DeviceOrderPage deviceOrderPage = PageFactory.initElements(driver, DeviceOrderPage.class);
     public InvoicePage invoicePage = PageFactory.initElements(driver, InvoicePage.class);
     public InvoiceHistoryPopUp invoiceHistoryPopUp = PageFactory.initElements(driver, InvoiceHistoryPopUp.class);
