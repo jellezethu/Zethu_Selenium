@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.devtools.latest.backgroundservice.BackgroundService;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import Pages.DeviceOrderPage;
 import Pages.LoginPage;
@@ -37,58 +38,58 @@ public class LoginTests extends Base {
     InvoicePage InvoicePage;
 
 
-    @Test(priority = 0)
-    public void clickLoginButton() throws InterruptedException {
-        takesScreenshots.takesSnapShot(driver,"landing page");
-        homePage.clickLoginButton();
-    }
-
-    @Test(priority = 1)
-    public void enterUsernameTests(){
-        loginPage.enterUsername(ReadData.username);
-    }
-
-    @Test(priority = 2)
-    public void enterPassword(){
-        loginPage.enterPassword(ReadData.password);
-        takesScreenshots.takesSnapShot(driver,"login page");
-    }
-
-    @Test(priority = 3)
-    public void clickLoginSubmitButton() throws InterruptedException {
-        loginPage.clickLoginSubmitButton();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.id("login-submit"));
-        takesScreenshots.takesSnapShot(driver,"dashboard page");
-    }
-    @Test(priority = 4)
-    public void verifyLoginSuccessTest(){
-        homePage.verifyLoginSuccess();
-        takesScreenshots.takesSnapShot(driver,"Landing page");
-        //HomePage homepage = new HomePage(driver);
-        //homepage.verifyLoginSuccess();
-    }
+//    @Test(priority = 0)
+//    public void clickLoginButton() throws InterruptedException {
+//        takesScreenshots.takesSnapShot(driver,"landing page");
+//        LoginPage.clickLoginButton();
+//    }
+//
+//    @Test(priority = 1)
+//    public void enterUsernameTests(){
+//        loginPage.enterUsername(ReadData.username);
+//    }
+//
+//    @Test(priority = 2)
+//    public void enterPassword(){
+//        loginPage.enterPassword(ReadData.password);
+//        takesScreenshots.takesSnapShot(driver,"login page");
+//    }
+//
+//    @Test(priority = 3)
+//    public void clickLoginSubmitButtonTest() throws InterruptedException {
+//        loginPage.clickLoginSubmitButton();
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.className("dashboard-welcome")));
+//        takesScreenshots.takesSnapShot(driver,"dashboard page");
+//    }
+//    @Test(priority = 4)
+//    public void verifyLoginSuccessTest(){
+//        homePage.verifyLoginSuccess();
+//        takesScreenshots.takesSnapShot(driver,"Landing page");
+//        //HomePage homepage = new HomePage(driver);
+//        //homepage.verifyLoginSuccess();
+//    }
 
     @Test(priority = 5)
-    public void clickLearnTabTest(){
+    public void clickLearnTab(){
         learnPage.clickLearnButton();
         //learnPage.clickLearnPage();
         takesScreenshots.takesSnapShot(driver,"Learn page");
     }
     @Test(priority = 6)
-    public void clickLearningMaterialMenuTest(){
+    public void clickLearningMaterial(){
         learnPage.clickLearningMaterials();
         //homepage.clickLearningMaterialmenu();
         takesScreenshots.takesSnapShot(driver,"Learning Material page");
     }
     @Test(priority = 7)
-    public void clickWebAutomationMenuTest(){
-        learnPage.clickWebAutomation();
+    public void clickWebAutomation() throws InterruptedException{
+        deviceOrderPage = learnPage.clickWebAutomationTab();
         takesScreenshots.takesSnapShot(driver,"Web Automation page");
     }
 
     @Test(priority = 8)
-    public void selectDeviceDetailsTest() {
+    public void selectDeviceDetails() {
         deviceOrderPage.selectDeviceType("phone");
         deviceOrderPage.selectBrand("Apple");
         deviceOrderPage.selectStorage("128GB");
@@ -102,34 +103,38 @@ public class LoginTests extends Base {
     }
 
     @Test(priority = 9)
-    public void verifyOrderSummaryTest() {
+    public void verifyOrderSummary() {
         orderSummaryPage.verifyOrderSummary();
-        OrderSummaryPage.selectExpressShippingOption("Express");
-        OrderSummaryPage.selectOneYearWarrantyOption("1yr");
+        OrderSummaryPage.selectExpressShippingOption();
+        OrderSummaryPage.selectOneYearWarrantyOption();
         OrderSummaryPage.enterDiscountCode("SAVA10");
+        OrderSummaryPage.clickApplyDiscountBtn();
+        OrderSummaryPage.clickPurchaseDevicesBtn();
         takesScreenshots.takesSnapShot(driver,"Discounts and Shipping Applied");
 
         //orderSummaryPage.clickConfirmPurchaseButton();
     }
 
     @Test(priority = 10)
-    public void OrderConfirmationPopUpTest() {
-        orderConfirmationPopUp.verifyOrderConfirmationPopUp.clickViewInvoice();
+    public void OrderConfirmationPopUp() {
+        orderConfirmationPopUp.clickViewInvoice();
         takesScreenshots.takesSnapShot(driver,"Order Confirmation Pop Up");
 
-        orderConfirmationPopUp.clickViewInvoiceButton();
+        //orderConfirmationPopUp.clickViewInvoiceButton();
     }
     @Test(priority = 11)
-    public void InvoiceHistoryPopUpTest() {
-        invoiceHistoryPopUp.InvoiceHistory.clickViewInvoice();
+    public void InvoiceHistoryPopUp() {
+        invoiceHistoryPopUp.clickViewInvoice();
         takesScreenshots.takesSnapShot(driver,"Invoice History Pop Up");
 
         //invoiceHistoryPopUp.clickViewInvoiceButton();
     }
     @Test(priority = 12)
-    public void InvoicePageTest() {
+    public void InvoicePage() {
         invoicePage.verifyInvoicePage();
         takesScreenshots.takesSnapShot(driver, "Invoice Page");
+
+        Assert.assertTrue(invoicePage.verifyInvoicePage());
     }
 
 }

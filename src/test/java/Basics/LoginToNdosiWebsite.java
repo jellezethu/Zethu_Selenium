@@ -56,6 +56,11 @@ public class LoginToNdosiWebsite {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("nav-dropdown-trigger")));
         //boolean loginSuccess = driver.findElement(By.xpath("//span[text()='My learning']")).isDisplayed();
     }
+    @Test (dependsOnMethods = {"verifyLoginSuccess"})
+    public void clickLearnButton() {
+        WebElement learnButton = driver.findElement(By.xpath("//*[@id=\"app-root\"]/nav/div[1]/div[2]/div[1]/button"));
+        learnButton.click();
+    }
 
 
 

@@ -22,19 +22,24 @@ public class LearnPage {
     @FindBy(xpath = "//*[@id=\"app-root\"]/nav/div[1]/div[2]/div[1]/button/span[2]")
     WebElement learnTab;
 
-    @FindBy(xpath ="//*[@id=\"app-root\"]/nav/div[2]/div[2]/button[2]/span[2]")
+    @FindBy(xpath ="//*[@id=\"app-root\"]/nav/div[1]/div[2]/div[1]/div/button[2]/span[2]")
     WebElement materialsTab;
 
 
     public void clickLearnButton() {
-        new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOf(learnTab));
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(learnTab));
         learnTab.isDisplayed();
 
     }
 
     public void clickLearningMaterials() {
-        new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOf(materialsTab));
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(materialsTab));
         materialsTab.isDisplayed();
 
+    }
+    public DeviceOrderPage clickWebAutomationTab() {
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(materialsTab));
+        materialsTab.click();
+        return new DeviceOrderPage(driver);
     }
 }

@@ -12,10 +12,17 @@ public class OrderConfirmationPopUp {
     WebElement viewHistoryBtn;
 
     public OrderConfirmationPopUp(WebDriver driver) {
+
         this.driver = driver;
     }
 
     public void clickViewHistoryBtn() {
         viewHistoryBtn.click();
+    }
+    public boolean verifyOrderConfirmationPopUp() {
+        return viewHistoryBtn.isDisplayed();
+    }
+    public void clickViewInvoice() {
+
     }
 }

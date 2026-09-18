@@ -24,13 +24,14 @@ public class LoginPage {
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements();
+        PageFactory.initElements(driver, this);
     }
 
     public void enterUsername(String username) {
         new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOf(usernameField));
         usernameField.sendKeys(username);
     }
+
     public void enterPassword(String password){
         passwordField.sendKeys(password);
 
@@ -39,9 +40,8 @@ public class LoginPage {
     public void clickLoginSubmitButton(){
         loginSubmitButton.click();
 
-
     }
-    return new HomePage(driver);
+
 
 
 }

@@ -14,4 +14,11 @@ public class InvoiceHistoryPopUp {
     public InvoiceHistoryPopUp(WebDriver driver) {
         this.driver = driver;
     }
+    public InvoicePage clickViewInvoice() {
+        viewInvoiceBtn.click();
+
+        return new InvoicePage(driver);
+
+    }
+    
 }

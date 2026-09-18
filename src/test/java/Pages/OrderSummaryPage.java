@@ -46,5 +46,9 @@ public class OrderSummaryPage {
     public OrderSummaryPage(WebDriver driver) {
         this.driver = driver;
     }
-
+    public boolean verifyOrderSummary() {
+        return expressShippingOption.isDisplayed() && oneYearWarrantyOption.isDisplayed() &&
+                discountCodeField.isDisplayed() && applyDiscountBtn.isDisplayed() &&
+                purchaseDevicesBtn.isDisplayed();
+    }
 }
